@@ -1,9 +1,7 @@
-# Project 2 @ C6 - Video Analysis
 ### Master in Computer Vision (Barcelona) 2024/25
+# Project 2 (Task 1) @ C6 - Video Analysis
 
-This repository provides the starter code for Project 2. The project will consist of the following tasks:
-- Task 1: Action classification on the SoccerNet Ball Action Spotting 2025 (SN-BAS-2025) dataset.
-- Task 2: Action spotting on SN-BAS-2025.
+This repository provides the starter code for Task 1 of Project 2: Action classification on the SoccerNet Ball Action Spotting 2025 (SN-BAS-2025) dataset.
 
 The installation of dependencies, how to obtain the dataset, and instructions on running the classification baseline are detailed next.
 
@@ -33,6 +31,7 @@ Here, `<model_name>` can be chosen freely but must match the name of a configura
 For additional details on configuration options using the configuration file, refer to the README in the [config](/config/) directory.
 
 ## Important notes
+
 - Before running the model, ensure that you have downloaded the dataset frames and updated the directory-related configuration parameters in the relevant [config](/config/) files.
 - Make sure to run the `main_classification.py` with the `mode` parameter set to `store` at least once to generate the clips and save them. After this initial run, you can set the `mode` to `load` to reuse the same clips in subsequent executions.
 
