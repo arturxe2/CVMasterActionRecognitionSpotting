@@ -36,6 +36,7 @@ def get_args():
     parser.add_argument('-j', '--num_workers', type=int,
                         default=os.cpu_count() // 4)
 
+    return parser.parse_args()
 
 def get_duration(video_path):
     # Copied from SoccerNet repo
@@ -43,7 +44,7 @@ def get_duration(video_path):
 
 
 def worker(args):
-    video_name, video_path, out_dir, sample_fps, recalc_fps = args
+    video_name, video_path, out_dir, width, height, sample_fps, recalc_fps = args
 
     def get_stride(src_fps):
         if sample_fps <= 0:
@@ -59,8 +60,8 @@ def worker(args):
     w = int(vc.get(cv2.CAP_PROP_FRAME_WIDTH))
     h = int(vc.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-    oh = args.height
-    ow = args.width
+    oh = height
+    ow = width
 
     time_in_s = get_duration(video_path)
 
@@ -128,6 +129,8 @@ def worker(args):
 def main(args):
     video_dir = args.video_dir
     out_dir = args.out_dir
+    width = args.width
+    height = args.height
     sample_fps = args.sample_fps
     recalc_fps = args.recalc_fps
     num_workers = args.num_workers
@@ -154,6 +157,8 @@ def main(args):
                             os.path.join(league, season, game, video_file),
                             os.path.join(game_dir, video_file),
                             os.path.join(out_dir, league, season, game) if out_dir else None,
+                            width,
+                            height,
                             sample_fps,
                             recalc_fps
                         ))

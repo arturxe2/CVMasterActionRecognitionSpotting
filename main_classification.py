@@ -47,6 +47,7 @@ def update_args(args, config):
     args.num_epochs = config['num_epochs']
     args.warm_up_epochs = config['warm_up_epochs']
     args.only_test = config['only_test']
+    args.device = config['device']
     args.num_workers = config['num_workers']
 
     return args
